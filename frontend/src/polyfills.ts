@@ -1,12 +1,9 @@
-import { Buffer } from 'buffer';
-import process from 'process';
+import { Buffer } from "buffer";
+import process from "process";
 
-if (typeof (window as any).global === 'undefined') {
-  (window as any).global = window;
-}
-if (typeof (window as any).process === 'undefined') {
-  (window as any).process = process;
-}
-if (typeof (window as any).Buffer === 'undefined') {
+if (!(window as any).Buffer) {
   (window as any).Buffer = Buffer;
+}
+if (!(window as any).process) {
+  (window as any).process = process;
 }
