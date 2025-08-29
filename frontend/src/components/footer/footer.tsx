@@ -24,7 +24,7 @@ function Footer() {
           <span className="text-neutral-300 font-medium">Connect</span>
           <a href="https://twitter.com" target="_blank" rel="noreferrer" className="hover:text-white">Twitter</a>
           <a href="https://github.com" target="_blank" rel="noreferrer" className="hover:text-white">GitHub</a>
-          <a href="mailto:hello@example.com" className="hover:text-white">hello@example.com</a>
+          <a href="mailto:egorvelikijkuzma@yandex.com" className="hover:text-white">egorvelikijkuzma@yandex.com</a>
         </div>
       </div>
 
