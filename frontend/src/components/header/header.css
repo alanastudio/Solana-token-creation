@@ -1,0 +1,17 @@
+@keyframes pulseDot {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: .9;
+    }
+
+    50% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+}
+
+header .logo-dot {
+    animation: pulseDot 2.5s ease-in-out infinite;
+}

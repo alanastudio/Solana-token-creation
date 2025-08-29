@@ -1,10 +1,9 @@
 import React, { useMemo, useState } from "react";
 import SectionCard from "../../components/ui/section_card";
-import { Input } from "../../components/ui/input";
+import { Input }from "../../components/ui/input";
 import { NumberInput } from "../../components/ui/number_input";
 import Toggle from "../../components/ui/toggle";
 import Dropzone from "../../components/ui/dropzone";
-// import ConnectWallet from "../../components/ui/connect_wallet";
 import { useWallet } from "@solana/wallet-adapter-react";
 
 type Revokes = { freeze: boolean; mint: boolean; update: boolean };

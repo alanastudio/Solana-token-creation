@@ -1,5 +1,5 @@
 type Props = {
-  label: string;
+  label?: string;
   value: number | string;
   onChange: (v: number) => void;
   min?: number; max?: number; step?: number;
@@ -9,7 +9,11 @@ type Props = {
 export function NumberInput({ label, value, onChange, min, max, step = 1, hint }: Props) {
   return (
     <div className="flex flex-col gap-2">
-      <label className="text-sm text-neutral-300"><span className="text-rose-400 mr-1">*</span>{label}</label>
+      {label && (
+        <label className="text-sm text-neutral-300">
+          <span className="text-rose-400 mr-1">*</span>{label}
+        </label>
+      )}
       <div className="flex items-center gap-2">
         <button
           type="button"

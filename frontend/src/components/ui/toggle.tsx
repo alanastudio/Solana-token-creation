@@ -1,12 +1,11 @@
-
 type Props = {
-  checked: boolean;
+  checked?: boolean;
   onChange: (v: boolean) => void;
   label?: string;
   disabled?: boolean;
 };
 
-export default function Toggle({ checked, onChange, label, disabled }: Props) {
+export default function Toggle({ checked = false, onChange, label, disabled }: Props) {
   return (
     <label className="flex items-center gap-3 cursor-pointer select-none">
       <div
