@@ -56,7 +56,7 @@ export default function LiquidityPool() {
         >
           I already have an OpenBook Market
         </a>
-        {/* или <Link to="/openbook-guide" className="ml-auto ..."> ... </Link> */}
+
       </div>
 
       {/* token selects */}
