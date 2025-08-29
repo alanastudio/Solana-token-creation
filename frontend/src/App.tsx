@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Header from './components/header/header';
 import Footer from './components/footer/footer';
-import Home from './pages/home/home';
+import CreateToken from './pages/create_token/create_token';
 
 function App() {
   return (
@@ -11,8 +11,9 @@ function App() {
       <div className="App">
         <Header />
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/home" element={<Home />} />
+          {/* <Route path="/" element={<Home />} /> */}
+          {/* <Route path="/home" element={<Home />} /> */}
+          <Route path='/create-token' element ={<CreateToken />} />
         </Routes>
         <Footer />
       </div>
