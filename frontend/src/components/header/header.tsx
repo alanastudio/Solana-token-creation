@@ -16,7 +16,7 @@ export default function Header() {
         {/* logo */}
         <Link to="/" className="flex items-center gap-2">
           <span className="text-2xl font-extrabold tracking-tight text-white lowercase">
-            generator
+            pornhub
           </span>
           <span className="inline-block h-2 w-2 rounded-full bg-white" />
         </Link>

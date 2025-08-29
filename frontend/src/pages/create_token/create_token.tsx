@@ -13,8 +13,8 @@ function Home() {
   const { connected } = useWallet();
 
   // form state
-  const [name, setName] = useState("Egor");
-  const [symbol, setSymbol] = useState("SOL");
+  const [name, setName] = useState("");
+  const [symbol, setSymbol] = useState("");
   const [decimals, setDecimals] = useState(6);
   const [supply, setSupply] = useState<number | string>(1);
   const [description, setDescription] = useState("");
@@ -57,14 +57,14 @@ function Home() {
               label="Name"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              placeholder="Egor"
+              placeholder="Name"
               hint="Max 32 characters in your name"
             />
             <Input
               label="Symbol"
               value={symbol}
               onChange={(e) => setSymbol(e.target.value.toUpperCase())}
-              placeholder="SOL"
+              placeholder="Symbol"
               hint="Max 8 characters in your symbol"
             />
 
