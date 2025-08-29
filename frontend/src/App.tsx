@@ -7,6 +7,7 @@ import Footer from './components/footer/footer';
 import CreateToken from './pages/create_token/create_token';
 import LiquidityPool from './pages/liquidity-pool/liquidity_pool';
 import ManageLiquidity from './pages/manage-liquidity/manage_liquidity';
+import Support from './pages/support/support';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path='/create-token' element ={<CreateToken />} />
           <Route path="/liquidity-pool" element={<LiquidityPool />} />
           <Route path="/manage-liquidity" element={<ManageLiquidity />} />
+          <Route path="/support" element={<Support />} />
         </Routes>
         </main>
         <Footer />
