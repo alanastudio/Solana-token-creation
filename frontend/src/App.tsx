@@ -10,14 +10,16 @@ import Home from './pages/home/home';
 function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-[#0B0D10] text-white">
+      <div className="flex flex-col min-h-screen bg-[#0B0D10] text-white">
         <Header />
+        <main className="flex-1">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
           <Route path='/create-token' element ={<CreateToken />} />
           <Route path="/liquidity-pool" element={<LiquidityPool />} />
         </Routes>
+        </main>
         <Footer />
       </div>
     </Router>
