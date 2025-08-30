@@ -4,6 +4,8 @@ backend/obj/
 
 # Node
 frontend/node_modules/
+backend/wallet-interaction/node_modules/
+devnet-token-creation/node_modules/
 solana-scripts/node_modules/
 solana-scripts/dist/
 /node_modules
