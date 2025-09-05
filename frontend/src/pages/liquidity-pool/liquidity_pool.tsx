@@ -11,7 +11,7 @@ export default function LiquidityPool() {
   const [advanced, setAdvanced] = useState(false);
   const [setLaunchDate, setSetLaunchDate] = useState(false);
   const [snipe, setSnipe] = useState(false);
-
+  
   // inputs
   const [baseToken, setBaseToken] = useState('');
   const [quoteToken, setQuoteToken] = useState('');
