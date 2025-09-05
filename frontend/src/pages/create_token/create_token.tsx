@@ -18,7 +18,7 @@ function Home() {
   const [supply, setSupply] = useState<number | string>(1);
   const [description, setDescription] = useState("");
   const [imageFile, setImageFile] = useState<File | null>(null);
-
+  
   // toggles
   const [socialLinks, setSocialLinks] = useState(false);
   const [modifyCreator, setModifyCreator] = useState(false);
@@ -26,6 +26,7 @@ function Home() {
   const [multiWalletDist, setMultiWalletDist] = useState(false);
   const [dextools, setDextools] = useState(false);
   const [revokes, setRevokes] = useState<Revokes>({ freeze: false, mint: false, update: false });
+  const [showAdvanced, setShowAdvanced] = useState(false);
 
   // fee calc (примерно, как в скрине)
   const baseFee = 0; // за создание самой формы — 0; сеть возьмёт газ отдельно
@@ -126,90 +127,91 @@ function Home() {
           <button
             className="text-sm text-neutral-300 flex items-center gap-1"
             onClick={() => {
-              document.getElementById("advanced")?.scrollIntoView({ behavior: "smooth" });
+              setShowAdvanced(!showAdvanced);
             }}
           >
-            Advance Options ▲
+            {showAdvanced ? "Advance Options ▲" : "Advance Options ▼"}
           </button>
         </div>
-
-        <div id="advanced" className="mt-4 space-y-6">
-          <SectionCard title="Modify Creator Information (+0.1 SOL):">
-            <div className="flex items-center justify-between">
-              <p className="text-sm text-neutral-400 max-w-2xl">
-                Change the information of the creator in the metadata, by default it is smithii.
-              </p>
-              <Toggle checked={modifyCreator} onChange={setModifyCreator} />
-            </div>
-          </SectionCard>
-
-          <SectionCard title="Custom Address Generator (+0.1 SOL):">
-            <div className="flex items-center justify-between">
-              <p className="text-sm text-neutral-400 max-w-2xl">
-                Customize the beginning and/or the end of your token contract address and make the difference. (max. 4 characters)
-              </p>
-              <Toggle checked={customAddress} onChange={setCustomAddress} />
-            </div>
-          </SectionCard>
-
-          <SectionCard title="Multi-Wallet Supply Distribution (+0.1 SOL):">
-            <div className="flex items-center justify-between">
-              <p className="text-sm text-neutral-400 max-w-2xl">
-                Distribute the supply of your token on different wallets within the creation. (maximum 10 wallets)
-              </p>
-              <Toggle checked={multiWalletDist} onChange={setMultiWalletDist} />
-            </div>
-          </SectionCard>
-
-          <SectionCard title="Add DEXTools Socials + Banner (+3 SOL)">
-            <div className="flex items-center justify-between">
-              <p className="text-sm text-neutral-400 max-w-2xl">
-                Add your token information on your DEXTools profile with a discounted price and much faster.
-              </p>
-              <Toggle checked={dextools} onChange={setDextools} />
-            </div>
-          </SectionCard>
-
-          <SectionCard title="Revoke Authorities">
-            <p className="text-xs text-neutral-500 mb-4">
-              Solana Token has 3 authorities: Freeze, Mint, Update. Removing them can attract more investors.
-            </p>
-            <div className="grid md:grid-cols-3 gap-4">
-              <div className="rounded-xl border border-neutral-800 p-4">
-                <div className="flex items-center justify-between">
-                  <h5 className="font-medium">Revoke Freeze</h5>
-                  <Toggle checked={revokes.freeze} onChange={(v)=>setRevokes({...revokes, freeze: v})} />
-                </div>
-                <p className="text-xs text-neutral-500 mt-2">
-                  No one will be able to freeze holders’ token accounts anymore.
+        {showAdvanced && (
+          <div id="advanced" className="mt-4 space-y-6">
+            <SectionCard title="Modify Creator Information (+0.1 SOL):">
+              <div className="flex items-center justify-between">
+                <p className="text-sm text-neutral-400 max-w-2xl">
+                  Change the information of the creator in the metadata, by default it is smithii.
                 </p>
-                <div className="text-xs text-neutral-400 mt-3">+0.1 SOL</div>
+                <Toggle checked={modifyCreator} onChange={setModifyCreator} />
               </div>
+            </SectionCard>
 
-              <div className="rounded-xl border border-neutral-800 p-4">
-                <div className="flex items-center justify-between">
-                  <h5 className="font-medium">Revoke Mint</h5>
-                  <Toggle checked={revokes.mint} onChange={(v)=>setRevokes({...revokes, mint: v})} />
-                </div>
-                <p className="text-xs text-neutral-500 mt-2">
-                  No one will be able to create more tokens anymore.
+            <SectionCard title="Custom Address Generator (+0.1 SOL):">
+              <div className="flex items-center justify-between">
+                <p className="text-sm text-neutral-400 max-w-2xl">
+                  Customize the beginning and/or the end of your token contract address and make the difference. (max. 4 characters)
                 </p>
-                <div className="text-xs text-neutral-400 mt-3">+0.1 SOL</div>
+                <Toggle checked={customAddress} onChange={setCustomAddress} />
               </div>
+            </SectionCard>
 
-              <div className="rounded-xl border border-neutral-800 p-4">
-                <div className="flex items-center justify-between">
-                  <h5 className="font-medium">Revoke Update</h5>
-                  <Toggle checked={revokes.update} onChange={(v)=>setRevokes({...revokes, update: v})} />
-                </div>
-                <p className="text-xs text-neutral-500 mt-2">
-                  No one will be able to modify token metadata anymore.
+            <SectionCard title="Multi-Wallet Supply Distribution (+0.1 SOL):">
+              <div className="flex items-center justify-between">
+                <p className="text-sm text-neutral-400 max-w-2xl">
+                  Distribute the supply of your token on different wallets within the creation. (maximum 10 wallets)
                 </p>
-                <div className="text-xs text-neutral-400 mt-3">+0.1 SOL</div>
+                <Toggle checked={multiWalletDist} onChange={setMultiWalletDist} />
               </div>
-            </div>
-          </SectionCard>
-        </div>
+            </SectionCard>
+
+            <SectionCard title="Add DEXTools Socials + Banner (+3 SOL)">
+              <div className="flex items-center justify-between">
+                <p className="text-sm text-neutral-400 max-w-2xl">
+                  Add your token information on your DEXTools profile with a discounted price and much faster.
+                </p>
+                <Toggle checked={dextools} onChange={setDextools} />
+              </div>
+            </SectionCard>
+
+            <SectionCard title="Revoke Authorities">
+              <p className="text-xs text-neutral-500 mb-4">
+                Solana Token has 3 authorities: Freeze, Mint, Update. Removing them can attract more investors.
+              </p>
+              <div className="grid md:grid-cols-3 gap-4">
+                <div className="rounded-xl border border-neutral-800 p-4">
+                  <div className="flex items-center justify-between">
+                    <h5 className="font-medium">Revoke Freeze</h5>
+                    <Toggle checked={revokes.freeze} onChange={(v)=>setRevokes({...revokes, freeze: v})} />
+                  </div>
+                  <p className="text-xs text-neutral-500 mt-2">
+                    No one will be able to freeze holders’ token accounts anymore.
+                  </p>
+                  <div className="text-xs text-neutral-400 mt-3">+0.1 SOL</div>
+                </div>
+
+                <div className="rounded-xl border border-neutral-800 p-4">
+                  <div className="flex items-center justify-between">
+                    <h5 className="font-medium">Revoke Mint</h5>
+                    <Toggle checked={revokes.mint} onChange={(v)=>setRevokes({...revokes, mint: v})} />
+                  </div>
+                  <p className="text-xs text-neutral-500 mt-2">
+                    No one will be able to create more tokens anymore.
+                  </p>
+                  <div className="text-xs text-neutral-400 mt-3">+0.1 SOL</div>
+                </div>
+
+                <div className="rounded-xl border border-neutral-800 p-4">
+                  <div className="flex items-center justify-between">
+                    <h5 className="font-medium">Revoke Update</h5>
+                    <Toggle checked={revokes.update} onChange={(v)=>setRevokes({...revokes, update: v})} />
+                  </div>
+                  <p className="text-xs text-neutral-500 mt-2">
+                    No one will be able to modify token metadata anymore.
+                  </p>
+                  <div className="text-xs text-neutral-400 mt-3">+0.1 SOL</div>
+                </div>
+              </div>
+            </SectionCard>
+          </div>
+        )}
 
         {/* footer */}
         <div className="mt-8 bg-neutral-950/60 border border-neutral-800 rounded-2xl p-4">
